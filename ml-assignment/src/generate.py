@@ -1,12 +1,13 @@
-from ngram_model import TrigramModel
+from src.ngram_model import TrigramModel
 
 def main():
-    # Create a new TrigramModel
+    # Create and train the TrigramModel
     model = TrigramModel()
 
-    # Train the model on the example corpus
+    # Load the example training corpus
     with open("data/example_corpus.txt", "r") as f:
         text = f.read()
+
     model.fit(text)
 
     # Generate new text
