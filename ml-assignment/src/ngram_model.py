@@ -79,9 +79,9 @@ class TrigramModel:
                 context = (padded[i], padded[i + 1])   # two-word context
                 next_word = padded[i + 2]
                 self.counts[context][next_word] += 1
-                # also collect bigram-level info for backoff (context last word -> next_word)
-                # here we increment a (single-word context) tuple to mirror fallback logic
-                self.bigram_counts[(context[1], next_word)] += 1
+                self.bigram_counts[context[1]][next_word] += 1
+
+
 
     # ----------------- generation -----------------
     def _sample_from_counter(self, counter: Counter):
